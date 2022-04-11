@@ -39,8 +39,5 @@
     user-select: none;
     font-family: 'Inter', 'irsans', sans-serif;
     /* direction: rtl; */
-}
-
-body {
-    @apply text-slate-400 bg-slate-100;
+    -webkit-tap-highlight-color: transparent;
 }

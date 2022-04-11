@@ -1,0 +1,129 @@
+@import "navbar";
+
+.fadeIn {
+  animation: fadeIn 300ms;
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(1.2);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+
+.fadeUp {
+  animation: fadeUp 300ms;
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}
+
+.card {
+  @apply p-10 bg-white max-w-2xl mx-auto rounded-xl shadow-xl shadow-slate-300/30 duration-300 flex flex-col gap-3;
+
+  .answers {
+    @apply flex flex-col gap-2;
+    li {
+      @apply p-6 cursor-pointer shadow-md shadow-slate-300/30 flex items-center gap-4 duration-100 rounded-md active:bg-sky-100 hover:bg-slate-100 hover:text-slate-500 active:text-sky-500 active:scale-95 font-medium;
+    }
+  }
+}
+
+
+
+.stepper-wrapper {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.stepper-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
+}
+
+.stepper-item::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  top: 20px;
+  left: -50%;
+  z-index: 2;
+  @apply border-b-2 border-slate-100;
+}
+
+.stepper-item::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  top: 20px;
+  left: 50%;
+  z-index: 2;
+  @apply border-b-2 border-slate-100;
+}
+
+.stepper-item .step-counter {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-bottom: 6px;
+  @apply bg-slate-100;
+}
+
+.stepper-item.active {
+  font-weight: bold;
+}
+
+.stepper-item.completed .step-counter {
+  // background-color: #4bb543;
+  @apply bg-sky-400 text-white;
+}
+
+.stepper-item.completed::after {
+  position: absolute;
+  content: "";
+  // border-bottom: 2px solid #4bb543;
+  @apply border-b-2 border-sky-400;
+  top: 20px;
+  left: 50%;
+  z-index: 3;
+  animation: progress-anim 300ms;
+  @keyframes progress-anim {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+}
+
+.stepper-item:first-child::before {
+  content: none;
+}
+.stepper-item:last-child::after {
+  content: none;
+}
